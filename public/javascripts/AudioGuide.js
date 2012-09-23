@@ -6,12 +6,14 @@ function AudioGuide(mediaLibrary, mediaPlayer) {
 }
 
 AudioGuide.prototype.locationChanged = function(newLocation) {
+  
   if (this.isPlaying) {
     this.pendingLocation = newLocation;
   } else {
     this.mediaPlayer.play(this.mediaLibrary.trackFor(newLocation));
     this.isPlaying = true;
   }
+  
 };
 
 AudioGuide.prototype.trackFinished = function() {
