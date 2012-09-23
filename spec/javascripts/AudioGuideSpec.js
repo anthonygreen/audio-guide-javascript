@@ -1,17 +1,17 @@
 describe("AudioGuide", function() {
 
-  var mediaLibrary = { trackFor: function() {} } 
   var firstLocation = new Location("First location");
   var nextLocation =  new Location("Next location");
   var finalLocation =  new Location("Final location");
   var firstTrack = new Track("First Track");
   var nextTrack = new Track("Next Track");
   var finalTrack = new Track("Final Track");
-
-  stub = sinon.stub(mediaLibrary, 'trackFor');
-  stub.withArgs(firstLocation).returns(firstTrack);
-  stub.withArgs(nextLocation).returns(nextTrack);
-  stub.withArgs(finalLocation).returns(finalTrack);
+  var trackFor = sinon.stub();
+      trackFor.withArgs(firstLocation).returns(firstTrack);
+      trackFor.withArgs(nextLocation).returns(nextTrack);
+      trackFor.withArgs(finalLocation).returns(finalTrack);
+  
+  var mediaLibrary = { trackFor: trackFor } 
   
   beforeEach(function() {    
     mediaPlayer = sinon.mock({ play: function(track) {} }) ;
