@@ -28,7 +28,7 @@ describe("LocationTracker", function() {
 		var location2 = new Location("Gloucester Road");
     var listener = sinon.mock({ locationChanged: function() {} }); 
     
-    var reverseGeocoder = new ReverseGeocoder;
+    var reverseGeocoder = { locationOf: function() {} }
     
     var stub = sinon.stub(reverseGeocoder, 'locationOf');
     stub.withArgs(position1).returns(location1);
